@@ -1,0 +1,14 @@
+{
+  "name": "azt",
+  "version": "0.1.0",
+  "description": "Azt is an ECS library written in Typescript.",
+  "main": "dist/azt.js",
+  "repository": "git@github.com:oal/azt.git",
+  "author": "Olav Lindekleiv <olav@lindekleiv.com>",
+  "license": "Apache 2.0",
+  "dependencies": {
+    "ts-loader": "^2.0.3",
+    "typescript": "^2.2.2",
+    "webpack": "^2.3.3"
+  }
+}
