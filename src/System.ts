@@ -21,7 +21,7 @@ export default class System {
     update(dt: number, entity: Entity, components: Component[]) {
     }
 
-    static requires(...componentTypes: ComponentClass[]) {
+    static requires(...componentTypes: ComponentClass[]): typeof System {
         return class CustomSystem extends System {
             get entities() {
                 return entityGenerator(this.manager, componentTypes);
@@ -30,11 +30,11 @@ export default class System {
     }
 }
 
-function* entityGenerator(manager, componentTypes) {
+function* entityGenerator(manager: EntityManager, componentTypes: ComponentClass[]) {
     let numComponents = componentTypes.length;
     let entities = manager.getEntities(componentTypes[numComponents-1]);
     for (let entity of entities) {
-        let components = [];
+        let components: Component[] = [];
         let hasFailed = false;
         for (let i = 0; i < numComponents; i++) {
             let type = componentTypes[i];

@@ -1,4 +1,5 @@
 import {Component, ComponentClass, ComponentStore} from "../typedefs";
+
 export default class ArrayComponentStore implements ComponentStore {
     private components: Map<ComponentClass, Component[]> = new Map();
 
@@ -49,7 +50,7 @@ export default class ArrayComponentStore implements ComponentStore {
     }
 }
 
-function* entityGenerator(array) {
+function* entityGenerator(array: Component[]) {
     let numEntities = array.length;
     for(let i = 0; i < numEntities; i++) {
         if(array[i]) yield i;

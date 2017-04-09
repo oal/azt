@@ -2,7 +2,7 @@ import {Component, ComponentClass, ComponentStore, Entity} from "./typedefs";
 import ArrayComponentStore from "./stores/ArrayComponentStore";
 
 class AssertionError extends Error {
-    constructor(message) {
+    constructor(message: string) {
         super(message);
         this.name = 'AssertionError';
     }
@@ -37,7 +37,7 @@ export default class EntityManager {
         return this.nextEntity++;
     }
 
-    deleteEntity(entity) {
+    deleteEntity(entity: Entity) {
         assert(this.hasEntity(entity), 'Tried to delete non-existing entity.');
 
         this.entities[entity]--;
