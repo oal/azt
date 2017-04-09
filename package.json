@@ -1,16 +1,22 @@
 {
   "name": "azt",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "Azt is an ECS library written in Typescript.",
   "main": "lib/index.js",
   "types": "lib/index",
   "files": [
     "lib/"
   ],
+  "scripts": {
+    "build": "node_modules/typescript/bin/tsc",
+    "test": "node_modules/typescript/bin/tsc && node_modules/tape/bin/tape 'tests/*.js'"
+  },
   "repository": "git@github.com:oal/azt.git",
   "author": "Olav Lindekleiv <olav@lindekleiv.com>",
   "license": "Apache 2.0",
-  "dependencies": {
+  "dependencies": {},
+  "devDependencies": {
+    "tape": "^4.6.3",
     "typescript": "^2.2.2"
   }
 }

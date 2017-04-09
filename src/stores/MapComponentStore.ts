@@ -15,7 +15,7 @@ export default class MapComponentStore implements ComponentStore {
 
     get(entity: Entity, type: ComponentClass): Component|null {
         let entities = this.components.get(type);
-        if (!entities) return null;
+        if (entities === undefined) return null;
         return entities.get(entity);
     }
 
@@ -42,7 +42,9 @@ export default class MapComponentStore implements ComponentStore {
     }
 
     getEntities(type: ComponentClass): IterableIterator<Entity> {
-        return this.components.get(type).keys();
+        let map = this.components.get(type);
+        if(map === undefined) map = new Map();
+        return map.keys();
     }
 
     getRegistered(): IterableIterator<ComponentClass> {

@@ -15,7 +15,7 @@ export default class ArrayComponentStore implements ComponentStore {
 
     get(entity: number, type: typeof Component): Component {
         let entities = this.components.get(type);
-        if (entities === null) return null;
+        if (entities === undefined) return null;
         return entities[entity];
     }
 
@@ -26,7 +26,7 @@ export default class ArrayComponentStore implements ComponentStore {
 
         let newComponentWasAdded = !array[entity];
 
-        array[entity]  = component;
+        array[entity] = component;
         return newComponentWasAdded;
     }
 
@@ -42,7 +42,8 @@ export default class ArrayComponentStore implements ComponentStore {
     }
 
     getEntities(type: typeof Component): IterableIterator<number> {
-        return entityGenerator(this.components.get(type));
+        let array = this.components.get(type);
+        return entityGenerator(array || []);
     }
 
     getRegistered(): IterableIterator<typeof Component> {
@@ -52,7 +53,7 @@ export default class ArrayComponentStore implements ComponentStore {
 
 function* entityGenerator(array: Component[]) {
     let numEntities = array.length;
-    for(let i = 0; i < numEntities; i++) {
-        if(array[i]) yield i;
+    for (let i = 0; i < numEntities; i++) {
+        if (array[i]) yield i;
     }
 }
